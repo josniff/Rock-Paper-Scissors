@@ -16,3 +16,20 @@ function getComputerChoice() {
 
 
 console.log(getComputerChoice());
+
+function getHumanChoice() {
+    let humanChoice = prompt("Rock, paper, or scissors?");
+    if (humanChoice === "Rock") {
+        return "Rock";
+    } else if (humanChoice === "Paper") {
+        return "Paper";
+    } else if (humanChoice === "Scissors") {
+        return "Scissors";
+    } else if (humanChoice === null) {
+        return;
+    } else {
+        return "Invalid Choice";
+    }
+}
+
+console.log(getHumanChoice());
