@@ -38,26 +38,32 @@ function playround(humanChoice, computerChoice) {
 
     if (humanChoice === "rock" && computerChoice === "scissors") {
         console.log("You win! Rock beats scissors.");
+        return humanScore++;
     } 
     
     else if (humanChoice === "paper" && computerChoice === "rock") {
         console.log("You win! Paper beats rock.");
+        return humanScore++;
     } 
     
     else if (humanChoice === "scissors" && computerChoice === "paper") {
         console.log("You win! Scissors beats paper.");
+        return humanScore++;
     } 
     
     else if (humanChoice === "rock" && computerChoice === "paper") {
         console.log("You lose! Paper beats rock.");
+        return computerScore++;
     } 
     
     else if (humanChoice === "paper" && computerChoice === "scissors"){
         console.log('You lose! Scissors beats paper.');
+        return computerScore++;
     } 
     
     else if (humanChoice === "scissors" && computerChoice === "rock"){
         console.log("You lose! Rock beats scissors");
+        return computerScore++;
     } 
     
     else {
@@ -70,6 +76,8 @@ const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice();
 
 playround(humanSelection, computerSelection);
+console.log("You have "  + humanScore + " points.");
+console.log("Your opponent has " + computerScore + " points.");
 
 // console.log(playround()); 
 
