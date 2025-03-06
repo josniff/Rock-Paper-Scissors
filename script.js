@@ -31,8 +31,7 @@ function getHumanChoice() {
 
 // console.log(getHumanChoice());
 
-let humanScore = 0
-let computerScore = 0
+
 
 function playround(humanChoice, computerChoice) {
 
@@ -72,12 +71,32 @@ function playround(humanChoice, computerChoice) {
 
     } 
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+    let humanScore = 0
+    let computerScore = 0
 
-playround(humanSelection, computerSelection);
-console.log("You have "  + humanScore + " points.");
-console.log("Your opponent has " + computerScore + " points.");
+function playGame() {
+    
 
-// console.log(playround()); 
+    function oneRound() {
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+
+        playround(humanSelection, computerSelection);
+        console.log("You have "  + humanScore + " points.");
+        console.log("Your opponent has " + computerScore + " points.");
+    }
+    oneRound();
+    oneRound();
+    oneRound();
+    oneRound();
+    oneRound();
+
+    if (humanScore > computerScore) {
+        alert("You win! Good job.");
+    } else {
+        alert("You lose! Try again.");
+    }
+}
+
+playGame();
 
