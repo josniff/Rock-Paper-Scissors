@@ -1,4 +1,6 @@
-// console.log("Hello, World!");
+const rockBtn = document.getElementById('rock');
+const paperBtn = document.getElementById('paper');
+const scissorsBtn = document.getElementById('scissors');
 
 function getComputerChoice() {
     let computerChoice = Math.floor(Math.random() * 3 + 1);
@@ -11,29 +13,30 @@ function getComputerChoice() {
 }
 }
 
-
 // console.log(getComputerChoice());
 
-function getHumanChoice() {
-    let humanChoice = prompt("Rock, paper, or scissors?");
-    if (humanChoice === "rock") {
-        return "rock";
-    } else if (humanChoice === "paper") {
-        return "paper";
-    } else if (humanChoice === "scissors") {
-        return "scissors";
-    } else if (humanChoice === null) {
-        return;
-    } else {
-        return "Invalid Choice";
-    }
-}
+// function getHumanChoice() {
+//     let humanChoice = prompt("Rock, paper, or scissors?");
+//     if (humanChoice === "rock") {
+//         return "rock";
+//     } else if (humanChoice === "paper") {
+//         return "paper";
+//     } else if (humanChoice === "scissors") {
+//         return "scissors";
+//     } else if (humanChoice === null) {
+//         return;
+//     } else {
+//         return "Invalid Choice";
+//     }
+// }
+
+
 
 // console.log(getHumanChoice());
 
 
-
-function playround(humanChoice, computerChoice) {
+// plays one round, and displays the winner based on the humanChoice
+function playRound(humanChoice, computerChoice) {
 
     if (humanChoice === "rock" && computerChoice === "scissors") {
         console.log("You win! Rock beats scissors.");
@@ -69,32 +72,53 @@ function playround(humanChoice, computerChoice) {
         console.log("It's a tie!");
     }
 
-    } 
+} 
 
-    let humanScore = 0
-    let computerScore = 0
+rockBtn.addEventListener("click", () => {
+    let computerChoice = getComputerChoice();
+    let humanChoice = 'rock';
+    playRound(humanChoice, computerChoice);
+}); 
 
+paperBtn.addEventListener("click", () => {
+    let computerChoice = getComputerChoice();
+    let humanChoice = 'paper';
+    playRound(humanChoice, computerChoice);
+});
+
+scissorsBtn.addEventListener("click", () => {
+    let computerChoice = getComputerChoice();
+    let humanChoice = 'scissors';
+    playRound(humanChoice, computerChoice);
+});
+
+    let humanScore = 0;
+    let computerScore = 0;
+
+// playGame defines the oneRound function, calls it five times, and compares the humanScore and computerScore variables.
 function playGame() {
     
-
+// oneRound defines the humanChoice and computerChoice in variables, calls the playround function with the variables
     function oneRound() {
         const humanSelection = getHumanChoice();
         const computerSelection = getComputerChoice();
 
-        playround(humanSelection, computerSelection);
+        playRound(humanSelection, computerSelection);
         console.log("You have "  + humanScore + " points.");
         console.log("Your opponent has " + computerScore + " points.");
     }
-    oneRound();
-    oneRound();
-    oneRound();
-    oneRound();
-    oneRound();
+    // oneRound();
+    // oneRound();
+    // oneRound();
+    // oneRound();
+    // oneRound();
 
     if (humanScore > computerScore) {
         alert("You win! Good job.");
-    } else {
+    } else if (humanScore < computerScore) {
         alert("You lose! Try again.");
+    } else {
+
     }
 }
 
