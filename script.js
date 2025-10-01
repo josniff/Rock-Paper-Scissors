@@ -13,6 +13,9 @@ function getComputerChoice() {
 }
 }
 
+const results = document.querySelector("container");
+const list = document.querySelector("ul");
+
 // console.log(getComputerChoice());
 
 // function getHumanChoice() {
@@ -34,50 +37,65 @@ function getComputerChoice() {
 
 // console.log(getHumanChoice());
 
-
+const listItem = document.createElement("li");
+const span = document.createElement("span")
+listItem.appendChild(span);
 // plays one round, and displays the winner based on the humanChoice
 function playRound(humanChoice, computerChoice) {
 
-    if (humanChoice === "rock" && computerChoice === "scissors") {
-        console.log("You win! Rock beats scissors.");
+   if (humanChoice === "rock" && computerChoice === "scissors") {
+        span.textContent = ("You win! Rock beats scissors.");
+        list.appendChild(listItem);
         return humanScore++;
     } 
     
     else if (humanChoice === "paper" && computerChoice === "rock") {
-        console.log("You win! Paper beats rock.");
+        span.textContent = ("You win! Paper beats rock.");
+        list.appendChild(listItem);
         return humanScore++;
     } 
     
     else if (humanChoice === "scissors" && computerChoice === "paper") {
-        console.log("You win! Scissors beats paper.");
+        span.textContent = ("You win! Scissors beats paper.");
+        list.appendChild(listItem);
         return humanScore++;
     } 
     
     else if (humanChoice === "rock" && computerChoice === "paper") {
-        console.log("You lose! Paper beats rock.");
+        span.textyContent = ("You lose! Paper beats rock.");
+        list.appendChild(listItem);
         return computerScore++;
     } 
     
     else if (humanChoice === "paper" && computerChoice === "scissors"){
-        console.log('You lose! Scissors beats paper.');
+        span.textContent = ("You lose! Scissors beats paper.");
+        list.appendChild(listItem);
         return computerScore++;
     } 
     
     else if (humanChoice === "scissors" && computerChoice === "rock"){
-        console.log("You lose! Rock beats scissors");
+        span.textContent = ("You lose! Rock beats scissors");
+        list.appendChild(listItem);
         return computerScore++;
     } 
     
     else {
-        console.log("It's a tie!");
+        span.textContent = ("It's a tie!");
     }
 
 } 
-
+// each of these buttons stores both the computerChoice (randomly generated) and humanChoice (button dependant) in variables, then executes the playRound function with those choices.
 rockBtn.addEventListener("click", () => {
     let computerChoice = getComputerChoice();
     let humanChoice = 'rock';
     playRound(humanChoice, computerChoice);
+    // const listItem = document.createElement("li");
+    // const span = document.createElement("span");
+    // // append the span as a child of the list item
+    // listItem.appendChild(span);
+    // // set the text content of the span...
+    // span.textContent = (humanChoice);
+    // results.appendChild(listItem);
 }); 
 
 paperBtn.addEventListener("click", () => {
@@ -98,7 +116,7 @@ scissorsBtn.addEventListener("click", () => {
 // playGame defines the oneRound function, calls it five times, and compares the humanScore and computerScore variables.
 function playGame() {
     
-// oneRound defines the humanChoice and computerChoice in variables, calls the playround function with the variables
+// oneRound stores the humanChoice and computerChoice in variables, calls the playround function with the variables
     function oneRound() {
         const humanSelection = getHumanChoice();
         const computerSelection = getComputerChoice();
