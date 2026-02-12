@@ -2,6 +2,11 @@ const rockBtn = document.getElementById('rock');
 const paperBtn = document.getElementById('paper');
 const scissorsBtn = document.getElementById('scissors');
 const nextBtn = document.getElementById('next');
+const startBtn = document.getElementById('start');
+
+const playerResults = document.querySelector("hsContainer");
+const computerResults = document.querySelector("csContainer");
+const list = document.querySelector("ul");
 
 function getComputerChoice() {
     let computerChoice = Math.floor(Math.random() * 3 + 1);
@@ -12,11 +17,9 @@ function getComputerChoice() {
 } else {
     return "scissors";
 }
-}
+};
 
-const playerResults = document.querySelector("hsContainer");
-const computerResults = document.querySelector("csContainer");
-const list = document.querySelector("ul");
+
 
 // console.log(getComputerChoice());
 
@@ -41,11 +44,13 @@ let humanScore = 0;
 let computerScore = 0;
 
 const listItem = document.createElement("li");
-const span = document.createElement("span")
+const span = document.createElement("span");
+
 // plays one round, and displays the winner based on the humanChoice
 function playRound(humanChoice, computerChoice) {
    
     listItem.appendChild(span);
+    // console.log(humanScore);
     
 
    if (humanChoice === "rock" && computerChoice === "scissors") {
@@ -87,31 +92,37 @@ function playRound(humanChoice, computerChoice) {
     else {
         span.textContent = ("It's a tie!");
     }
-} 
+};
 
+startBtn.addEventListener("click", () => {
 // each of these buttons stores both the computerChoice (randomly generated) and humanChoice (button dependant) in variables, then executes the playRound function with those choices.
-rockBtn.addEventListener("click", () => {
-    let computerChoice = getComputerChoice();
-    let humanChoice = 'rock';
-    playRound(humanChoice, computerChoice);
-}); 
+    rockBtn.addEventListener("click", () => {
+        let computerChoice = getComputerChoice();
+        let humanChoice = 'rock';
+        playRound(humanChoice, computerChoice);
+    }); 
 
-paperBtn.addEventListener("click", () => {
-    let computerChoice = getComputerChoice();
-    let humanChoice = 'paper';
-    playRound(humanChoice, computerChoice);
-});
+    paperBtn.addEventListener("click", () => {
+        let computerChoice = getComputerChoice();
+        let humanChoice = 'paper';
+        playRound(humanChoice, computerChoice);
+    });
 
-scissorsBtn.addEventListener("click", () => {
-    let computerChoice = getComputerChoice();
-    let humanChoice = 'scissors';
-    playRound(humanChoice, computerChoice);
-});
+    scissorsBtn.addEventListener("click", () => {
+        let computerChoice = getComputerChoice();
+        let humanChoice = 'scissors';
+        playRound(humanChoice, computerChoice);
+    });
+
+});    
 
 nextBtn.addEventListener("click", () => {
     list.removeChild(listItem);
+    rockBtn.removeEventListener("click", null);
+    paperBtn.removeEventListener("click", null);
+    scissorsBtn.removeEventListener("click", null);
 });
-    
+
 
 // playGame defines the oneRound function, calls it five times, and compares the humanScore and computerScore variables.
 // function playGame() {
